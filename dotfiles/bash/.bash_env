@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/.ripgreprc
+
+# `git` default editor
+export VISUAL="nvim"
+
+export PS1='\[\e[32m\]$\[\e[0m\] '

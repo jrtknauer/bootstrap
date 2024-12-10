@@ -1,0 +1,33 @@
+[user]
+    email = jrtknauer@proton.me
+    name = Jarrett Knauer
+    lpuser = jrtknauer
+
+[core]
+    editor = nvim
+
+[init]
+    defaultBranch = main
+
+[diff]
+    algorithm = histogram
+
+[alias]
+    lp-remoteadd = "!f() { \
+                    TEAM=$1; \
+                    LP_USER=$(git config user.lpuser); \
+                    REPO=$(basename -s .git $(git config --get remote.origin.url)); \
+                    git remote add \
+                        ${LP_USER} \
+                        git+ssh://${LP_USER}@git.launchpad.net/~${LP_USER}/${TEAM:=cloudware}/+git/${REPO}; \
+                    }; f"
+    push-me = "!f() { \
+               LP_USER=$(git config user.lpuser); \
+               git push --set-upstream ${LP_USER} $1; \
+               }; f"
+
+[url "git+ssh://jrtknauer@git.launchpad.net/"]
+    insteadof = lp:
+
+[includeIf "gitdir:~/work/canonical/"]
+    path = ~/.gitconfig.canonical

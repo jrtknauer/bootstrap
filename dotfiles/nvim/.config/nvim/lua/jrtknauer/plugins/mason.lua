@@ -29,6 +29,7 @@ return {
 				"gopls",
 				"lua_ls",
 				"jedi_language_server",
+				"typos_lsp",
 			},
 			handlers = {
 				function(server_name)

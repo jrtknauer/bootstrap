@@ -44,6 +44,19 @@ return {
 						single_file_support = true,
 					})
 				end,
+				["gopls"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.gopls.setup({
+						capabilities = capabilities,
+						settings = {
+							gopls = {
+								hints = {
+									parameterNames = true,
+								},
+							},
+						},
+					})
+				end,
 				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup({
@@ -56,6 +69,9 @@ return {
 										"cmp_select",
 										"vim",
 									},
+								},
+								hint = {
+									enable = true,
 								},
 							},
 						},

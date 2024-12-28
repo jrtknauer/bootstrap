@@ -23,3 +23,8 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux new-window tmux_session.sh<CR>")
+
+-- Toggle inlay hints.
+vim.keymap.set("n", "<leader>i", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }))
+end)

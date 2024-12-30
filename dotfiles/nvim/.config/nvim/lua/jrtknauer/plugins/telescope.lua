@@ -5,6 +5,20 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	opts = {
+        pickers = {
+            find_files = {
+                theme = "ivy",
+            },
+            git_files = {
+                theme = "ivy",
+            },
+            grep_string = {
+                theme = "ivy",
+            },
+            help_tags = {
+                theme = "ivy",
+            },
+        },
 		extensions = {
 			fzf = {},
 		},

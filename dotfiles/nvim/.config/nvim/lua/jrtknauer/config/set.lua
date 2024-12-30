@@ -21,3 +21,5 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 vim.opt.colorcolumn = "80,120"
+
+vim.opt.splitright = true

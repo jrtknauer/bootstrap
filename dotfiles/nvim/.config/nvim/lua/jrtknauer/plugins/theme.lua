@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	cond = true,
-	init = function()
+	config = function()
 		vim.cmd("colorscheme github_dark_default")
 	end,
 }

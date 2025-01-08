@@ -14,12 +14,8 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
-		local capabilities = vim.tbl_deep_extend(
-			"force",
-			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
-		)
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = cmp_lsp.default_capabilities(capabilities)
 
 		require("mason").setup()
 		require("mason-lspconfig").setup({

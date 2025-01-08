@@ -8,6 +8,7 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 	},
@@ -24,8 +25,8 @@ return {
 				"biome",
 				"gopls",
 				"lua_ls",
-				"jedi_language_server",
 				"terraformls",
+				"pyright",
 				"typos_lsp",
 			},
 			handlers = {
@@ -90,8 +91,9 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp_signature_help" },
 			}),
 		})
 	end,

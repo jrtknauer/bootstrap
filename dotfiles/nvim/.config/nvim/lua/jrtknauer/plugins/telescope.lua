@@ -40,6 +40,6 @@ return {
 		local grep_word = function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end
-		vim.keymap.set("n", "<leader>pws", grep_word, { desc = "Grep files for currently selected word" })
+		vim.keymap.set("n", "<leader>ps", grep_word, { desc = "Grep files for input word" })
 	end,
 }

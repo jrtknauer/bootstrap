@@ -1,4 +1,4 @@
-# hadolint global ignore=DL3008
+# hadolint global ignore=DL3008,DL3015
 FROM ubuntu:noble AS build
 
 ARG NEOVIM_VERSION

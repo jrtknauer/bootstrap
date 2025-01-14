@@ -27,6 +27,7 @@ function new_session() {
 WORKSPACES=(
     "${HOME}"
     "${HOME}/personal"
+    "${HOME}/work"
     "${HOME}/work/canonical"
 )
 WORKSPACE="$(find "${WORKSPACES[@]}" -mindepth 1 -maxdepth 1 -type d | fzf)"

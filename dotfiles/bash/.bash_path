@@ -6,7 +6,3 @@ addToPath "${HOME}/.neovim/neovim-v0.10.2/bin"
 addToPath "${HOME}/bin/.local/scripts"
 addToPath "${HOME}/.just/just-1.37.0"
 addToPath "${HOME}/go/bin"
-
-# Install this manually because they made things difficult with their CDN:
-# https://docs.temporal.io/cli#how-to-install-the-temporal-cli-on-linux
-addToPath "${HOME}/.temporalio-cli/temporal-1.1.2"

@@ -7,3 +7,7 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/.ripgreprc
 export VISUAL="nvim"
 
 export PS1='\[\e[32m\]$\[\e[0m\] '
+
+if [ -z "${SSH_AUTH_SOCK}" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+fi

@@ -6,7 +6,7 @@ set -eux
 
 # Build and install Neovim.
 function install_neovim() {
-    local version="v0.10.2"
+    local version="v0.10.3"
     local install_dir="${HOME}/.neovim"
 
     mkdir --parent "${install_dir}"

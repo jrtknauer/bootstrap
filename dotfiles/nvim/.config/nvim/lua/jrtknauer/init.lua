@@ -32,3 +32,11 @@ autocmd("LspAttach", {
 		end, opts)
 	end,
 })
+
+autocmd("FileType", {
+	pattern = "netrw",
+	callback = function()
+		vim.wo.relativenumber = true
+		vim.wo.number = true
+	end,
+})

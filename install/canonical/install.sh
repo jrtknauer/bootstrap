@@ -10,6 +10,7 @@ function install_cpc_packages() {
         devscripts \
         git-build-recipe \
         python3-swiftclient \
+        python3-virtualenv \
         qemu-system-x86 \
         ubuntu-dev-tools
 }

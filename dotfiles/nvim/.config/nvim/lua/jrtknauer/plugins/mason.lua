@@ -25,6 +25,7 @@ return {
 				"gopls",
 				"lua_ls",
 				"jedi_language_server",
+				"terraformls",
 				"typos_lsp",
 			},
 			handlers = {

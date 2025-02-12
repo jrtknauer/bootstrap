@@ -10,6 +10,7 @@ sudo apt-get install \
     curl \
     fzf \
     git \
+    jq \
     python3-pip \
     python3.12-venv \
     stow \

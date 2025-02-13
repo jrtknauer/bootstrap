@@ -40,3 +40,13 @@ autocmd("FileType", {
 		vim.wo.number = true
 	end,
 })
+
+-- Docker Bake does not have an LSP. While YAML is supported HCL is preferred.
+autocmd("FileType", {
+    pattern = "hcl",
+    callback = function()
+        vim.opt.tabstop = 2
+        vim.opt.shiftwidth = 2
+        vim.opt.softtabstop = 2
+    end,
+})

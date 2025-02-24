@@ -42,7 +42,7 @@ WORKDIR /build/neovim-$NEOVIM_VERSION
 
 # https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-source
 RUN <<EOF
-make CMAKE_EXTRA_FLAGS="DCMAKE_INSTALL_PREFIX=/build/out/neovim-$NEOVIM_VERSION"
+make CMAKE_BUILD_TYPE="Release" CMAKE_EXTRA_FLAGS="DCMAKE_INSTALL_PREFIX=/build/out/neovim-$NEOVIM_VERSION"
 make install
 EOF
 

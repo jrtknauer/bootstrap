@@ -29,6 +29,7 @@ WORKSPACES=(
     "${HOME}/personal"
     "${HOME}/work"
     "${HOME}/work/canonical"
+    "${HOME}/work/code_reviews"
 )
 WORKSPACE="$(find "${WORKSPACES[@]}" -mindepth 1 -maxdepth 1 -type d | fzf)"
 if [[ -z "${WORKSPACE}" ]]; then

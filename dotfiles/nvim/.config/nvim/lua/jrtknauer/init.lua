@@ -2,12 +2,7 @@ require("jrtknauer.config.remap")
 require("jrtknauer.config.set")
 require("jrtknauer.config.lazy")
 
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-local jrtknauer_group = augroup("jrtknauer", {})
-
-autocmd("LspAttach", {
-	group = jrtknauer_group,
+vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(e)
 		local opts = { buffer = e.buf }
 
@@ -33,7 +28,7 @@ autocmd("LspAttach", {
 	end,
 })
 
-autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "netrw",
 	callback = function()
 		vim.wo.relativenumber = true
@@ -42,11 +37,11 @@ autocmd("FileType", {
 })
 
 -- Docker Bake does not have an LSP. While YAML is supported HCL is preferred.
-autocmd("FileType", {
-    pattern = "hcl",
-    callback = function()
-        vim.opt.tabstop = 2
-        vim.opt.shiftwidth = 2
-        vim.opt.softtabstop = 2
-    end,
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "hcl",
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.softtabstop = 2
+	end,
 })

@@ -2,7 +2,4 @@
 
 source "${HOME}/.functions"
 
-addToPath "${HOME}/.neovim/neovim-v0.11.0/bin"
-addToPath "${HOME}/bin/.local/scripts"
-addToPath "${HOME}/.just/just-1.37.0"
 addToPath "${HOME}/go/bin"

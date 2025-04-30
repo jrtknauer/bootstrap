@@ -10,11 +10,21 @@ sudo apt-get \
     upgrade
 
 sudo apt-get \
-    --no-install-recommends \
     --quiet \
     --verbose-versions \
     --yes \
     install \
         ca-certificates \
         curl \
+        fzf \
+        g++ \
+        gcc \
+        git \
+        golang-go \
+        i3 \
+        jq \
+        rofi \
         stow \
+        tmux \
+        vim \
+        xclip

@@ -2,6 +2,8 @@ require("jrtknauer.config.remap")
 require("jrtknauer.config.set")
 require("jrtknauer.config.lazy")
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(e)
 		local opts = { buffer = e.buf }

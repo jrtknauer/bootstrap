@@ -5,22 +5,13 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	opts = {
-		pickers = {
-			find_files = {
-				theme = "ivy",
-			},
-			git_files = {
-				theme = "ivy",
-			},
-			grep_string = {
-				theme = "ivy",
-			},
-			help_tags = {
-				theme = "ivy",
-			},
-		},
 		extensions = {
 			fzf = {},
+		},
+		pickers = {
+			find_files = {
+				hidden = true,
+			},
 		},
 	},
 	init = function()
@@ -37,9 +28,29 @@ return {
 		end
 		vim.keymap.set("n", "<leader>pws", grep_selected, { desc = "Grep files for currently selected word" })
 
-		local grep_word = function()
-			builtin.grep_string({ search = vim.fn.input("Grep > ") })
+		local grep_string = function()
+			local status, search = pcall(function()
+				return vim.fn.input("Grep > ")
+			end)
+
+			if not status then
+				return
+			end
+
+			if search == "" then
+				return
+			end
+
+			builtin.grep_string({
+				search = search,
+				additional_args = function()
+					return {
+						"--hidden",
+						"--smart-case",
+					}
+				end,
+			})
 		end
-		vim.keymap.set("n", "<leader>ps", grep_word, { desc = "Grep files for input word" })
+		vim.keymap.set("n", "<leader>ps", grep_string, { desc = "Grep files for input word" })
 	end,
 }

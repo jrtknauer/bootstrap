@@ -12,10 +12,10 @@ WORKSPACE="$(
         -mindepth 1 \
         -maxdepth 1 \
         -type d \
-    | fzf \
-        --cycle \
-        --border=sharp \
-        --border-label="Tmux Session" \
+        | fzf \
+            --cycle \
+            --border=sharp \
+            --border-label="Tmux Session"
 )"
 if [[ -z "${WORKSPACE}" ]]; then
     exit 0
@@ -30,7 +30,7 @@ if ! tmux has-session -t="${NAME}" 2> /dev/null; then
         -c "${WORKSPACE}"
 fi
 
-if [[ ! -z "${TMUX}" ]]; then
+if [[ -n "${TMUX}" ]]; then
     tmux switch-client -t "${NAME}"
     exit 0
 fi

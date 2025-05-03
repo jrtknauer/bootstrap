@@ -1,0 +1,13 @@
+[window]
+
+decorations = "None"
+startup_mode = "Maximized"
+
+[font]
+
+normal = { family = "JetBrains Mono Nerd Font", style = "normal" }
+bold = { family = "JetBrains Mono Nerd Font", style = "bold" }
+italic = { family = "JetBrains Mono Nerd Font", style = "italic" }
+bold_italic = { family = "JetBrains Mono Nerd Font", style = "bold_italic" }
+
+size = 14

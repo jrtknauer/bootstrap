@@ -1,33 +1,39 @@
 #!/bin/bash
+#
+# Install ShellCheck.
+# https://github.com/koalaman/shellcheck
 
 set -eux
 
-SHELLCHECK_VERSION="v0.10.0"
-SHELLCHECK_TAR="shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz"
-INSTALL_DIR="${HOME}/.bootstrap/shellcheck/${SHELLCHECK_VERSION}"
-DOWNLOAD="/tmp/${SHELLCHECK_TAR}"
+VERSION="0.10.0"
+TAR="shellcheck-v${VERSION}.linux.x86_64.tar.xz"
+DOWNLOAD_URL="https://github.com/koalaman/shellcheck/releases/download/v${VERSION}/${TAR}"
+DOWNLOAD_PATH="/tmp/${TAR}"
+INSTALL_DIR="${HOME}/.bootstrap/shellcheck/${VERSION}"
 
 mkdir --parents "${INSTALL_DIR}"
 
 curl \
     --fail \
-	--location \
-	--output "${DOWNLOAD}" \
-	--show-error \
+    --location \
+    --output "${DOWNLOAD_PATH}" \
+    --show-error \
     --silent \
-    "https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/${SHELLCHECK_TAR}"
+    "${DOWNLOAD_URL}"
 
 tar \
-    --directory="${INSTALL_DIR}" \
     --extract \
+    --file="${DOWNLOAD_PATH}" \
+    --directory="${INSTALL_DIR}" \
     --strip-component=1 \
-    --verbose \
-    --file="${DOWNLOAD}"
+    --verbose
 
-rm --force "${DOWNLOAD}"
+rm --force "${DOWNLOAD_PATH}"
 
 ln \
     --force \
     --symbolic \
     "${INSTALL_DIR}/shellcheck" \
     "${HOME}/.local/bin/shellcheck"
+
+shellcheck --version

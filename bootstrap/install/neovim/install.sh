@@ -2,32 +2,36 @@
 
 set -eux
 
-NEOVIM_VERSION="v0.11.1"
-NEOVIM_TAR="nvim-linux-x86_64.tar.gz"
-INSTALL_DIR="${HOME}/.bootstrap/neovim/${NEOVIM_VERSION}"
+VERSION="v0.11.1"
+TAR="nvim-linux-x86_64.tar.gz"
+DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/${VERSION}/${TAR}"
+DOWNLOAD_PATH="/tmp/${TAR}"
+INSTALL_DIR="${HOME}/.bootstrap/neovim/${VERSION}"
 
 mkdir --parents "${INSTALL_DIR}"
 
 curl \
     --fail \
-	--location \
-	--output "${INSTALL_DIR}/${NEOVIM_TAR}" \
-	--show-error \
+    --location \
+    --output "${DOWNLOAD_PATH}" \
+    --show-error \
     --silent \
-    https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/${NEOVIM_TAR}
+    "${DOWNLOAD_URL}"
 
 tar \
-    --directory="${INSTALL_DIR}" \
     --extract \
+    --file="${DOWNLOAD_PATH}" \
+    --directory="${INSTALL_DIR}" \
     --gzip \
     --strip-components=1 \
-    --verbose \
-    --file="${INSTALL_DIR}/${NEOVIM_TAR}"
+    --verbose
 
-rm --force "${INSTALL_DIR}/${NEOVIM_TAR}"
+rm --force "${DOWNLOAD_PATH}"
 
 ln \
     --force \
     --symbolic \
     "${INSTALL_DIR}/bin/nvim" \
     "${HOME}/.local/bin/nvim"
+
+nvim --version

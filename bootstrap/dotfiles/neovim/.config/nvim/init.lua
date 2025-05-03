@@ -7,7 +7,6 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 
--- Netrw relative line numbers.
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "netrw",
 	callback = function()
@@ -15,3 +14,16 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.wo.number = true
 	end,
 })
+
+vim.api.nvim_create_user_command("ToggleBackground", function()
+	local BACKGROUND = {
+		DARK = "dark",
+		LIGHT = "light",
+	}
+
+	if vim.o.background == BACKGROUND.DARK then
+		vim.o.background = BACKGROUND.LIGHT
+	else
+		vim.o.background = BACKGROUND.DARK
+	end
+end, {})

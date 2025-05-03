@@ -22,19 +22,47 @@ install-%:
 uninstall-%:
 	$(MAKE) -C bootstrap/install uninstall-$*
 
-.PHONY: format
-format: build
-	docker run \
+.PHONY: lint
+lint:
+	@shfmt \
+		--diff \
+		.
+	@find \
+		. \
+		-type f \
+		-name *.sh \
+		| xargs -r shellcheck --external-sources
+	@docker run \
         --mount type=bind,src=$$(pwd),dst=/workdir \
+		--quiet \
         --rm \
         --tty \
         --workdir /workdir \
 		bootstrap/stylua:latest \
-        --allow-hidden --verify --verbose .
+        --allow-hidden \
+		--check \
+		.
+
+.PHONY: format
+format: build
+	@shfmt \
+		--list \
+		--write \
+		.
+	@docker run \
+        --mount type=bind,src=$$(pwd),dst=/workdir \
+		--quiet \
+        --rm \
+        --tty \
+        --workdir /workdir \
+		bootstrap/stylua:latest \
+        --allow-hidden \
+		--verify \
+		.
 
 .PHONY: build
 build: build-stylua
 
 .PHONY: build-stylua
 build-stylua:
-	$(MAKE) -C docker stylua
+	@$(MAKE) -C docker stylua

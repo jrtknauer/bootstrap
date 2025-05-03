@@ -1,15 +1,13 @@
-
-TARGETS := $(wildcard */)
-
+ALL_TARGETS := $(wildcard */)
 BOOTSTRAP_TARGETS := uv/ docker/
-BOOTSTRAP := $(filter-out $(BOOTSTRAP_TARGETS),$(TARGETS))
+POST_BOOTSTRAP_TARGETS := $(filter-out $(BOOTSTRAP_TARGETS),$(ALL_TARGETS))
 
-WSL_SKIP_TARGETS := chrome/
-WSL_TARGETS := $(filter-out $(WSL_SKIP_TARGETS),$(TARGETS))
+WSL_SKIP_TARGETS := chrome/ mattermost/ protonvpn/
+WSL_TARGETS := $(filter-out $(WSL_SKIP_TARGETS),$(ALL_TARGETS))
 
 .PHONY: all
 all: bootstrap
-	for target in $(TARGETS); do \
+	for target in $(POST_BOOTSTRAP_TARGETS); do \
 		$(MAKE) -C $$target install; \
 	done
 
@@ -22,7 +20,7 @@ wsl: bootstrap
 .PHONY: bootstrap
 bootstrap:
 	bash bootstrap.sh
-	for target in $(BOOTSTRAP); do \
+	for target in $(BOOTSTRAP_TARGETS); do \
 		$(MAKE) -C $$target install; \
 	done
 

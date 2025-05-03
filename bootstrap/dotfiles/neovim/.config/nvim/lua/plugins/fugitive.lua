@@ -2,7 +2,7 @@ return {
 	"tpope/vim-fugitive",
 	config = function()
 		local git = function()
-			vim.cmd("vertical Git")
+			vim.cmd("Git")
 		end
 		vim.keymap.set("n", "<leader>gs", git)
 	end,

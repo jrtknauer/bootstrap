@@ -5,26 +5,27 @@ set -eux
 sudo apt-get update
 sudo apt-get \
     --quiet \
-    --verbose-versions \
     --yes \
     upgrade
 
 sudo apt-get \
+    --fix-broken \
     --quiet \
-    --verbose-versions \
     --yes \
     install \
-        ca-certificates \
-        curl \
-        fzf \
-        g++ \
-        gcc \
-        git \
-        golang-go \
-        i3 \
-        jq \
-        rofi \
-        stow \
-        tmux \
-        vim \
-        xclip
+    ca-certificates \
+    cargo \
+    curl \
+    g++ \
+    gcc \
+    git \
+    golang-go \
+    gzip \
+    i3 \
+    jq \
+    rofi \
+    scdoc \
+    stow \
+    tmux \
+    vim \
+    xclip

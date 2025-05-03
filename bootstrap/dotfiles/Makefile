@@ -1,4 +1,3 @@
-
 PACKAGES := $(wildcard */)
 
 .PHONY: all

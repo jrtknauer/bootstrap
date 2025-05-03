@@ -38,12 +38,12 @@ return {
 	end,
 	settings = {
 		Lua = {
-			diagnostics = {
-				globals = {
-					"capabilities",
-					"vim",
-				},
-			},
+			-- diagnostics = {
+			-- 	globals = {
+			-- 		"capabilities",
+			-- 		"vim",
+			-- 	},
+			-- },
 			hint = {
 				enable = true,
 			},

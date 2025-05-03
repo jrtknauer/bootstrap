@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export PS1='\[\e[32m\]$\[\e[0m\] '

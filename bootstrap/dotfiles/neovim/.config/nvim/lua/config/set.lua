@@ -17,11 +17,9 @@ vim.opt.backup = false
 
 vim.opt.termguicolors = true
 
+vim.opt.splitright = true
+
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-
-vim.opt.colorcolumn = "80,120"
-
-vim.opt.splitright = true
 
 vim.opt.completeopt = "fuzzy,menuone,noinsert,popup"

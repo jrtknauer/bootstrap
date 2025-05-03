@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # Install uv.
-#
 # https://docs.astral.sh/uv/getting-started/installation/
 
 set -eux
@@ -15,3 +14,4 @@ curl \
     | sh
 
 uv self update
+uv --version

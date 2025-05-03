@@ -1,22 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # Install Google Chrome.
 
 set -eux
 
-CHROME_DEB="google-chrome-stable_current_amd64.deb"
-INSTALL="/tmp/${CHROME_DEB}"
+DEB="google-chrome-stable_current_amd64.deb"
+DOWNLOAD_URL="https://dl.google.com/linux/direct/${DEB}"
+DOWNLOAD_PATH="/tmp/${DEB}"
 
 curl \
     --fail \
     --location \
     --show-error \
     --silent \
-    --output "${INSTALL}" \
-    https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    --output "${DOWNLOAD_PATH}" \
+    "${DOWNLOAD_URL}"
 
-sudo dpkg --install "${INSTALL}"
-rm --force "${INSTALL}"
+sudo dpkg --install "${DOWNLOAD_PATH}"
+rm --force "${DOWNLOAD_PATH}"
 
 sudo update-alternatives \
     --install \
@@ -29,3 +30,5 @@ sudo update-alternatives \
     --set \
     x-www-browser \
     /usr/bin/google-chrome-stable
+
+google-chrome --version
